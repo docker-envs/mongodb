@@ -1,0 +1,22 @@
+version: "3"
+
+services:
+  mongo:
+    image: mongo:4.0.6
+    restart: always
+    volumes:
+      - ./storage:/data/db
+      - ./conf:/etc/mongo
+      - ./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+      - ./log:/var/log/mongodb
+    ports:
+      - "30010:27017"
+  # mongo图形化配置
+  # mongo-express:
+  #   image: mongo-express
+  #   restart: always
+  #   ports:
+  #     - 8081:8081
+  #   environment:
+  #     ME_CONFIG_MONGODB_ADMINUSERNAME: nxauth
+  #     ME_CONFIG_MONGODB_ADMINPASSWORD: nuanxin?2017
